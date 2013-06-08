@@ -53,8 +53,7 @@ public class Driver {
 		AmazonSNS snsClient = null;
 
 		try {
-			//get credentials from default provider chain
-			myCredentials = new EnvironmentVariableCredentialsProvider().getCredentials();
+			myCredentials = new DefaultAWSCredentialsProviderChain().getCredentials();
 			snsClient = new AmazonSNSClient(myCredentials);
 		} catch (Exception ex) {
 			System.out.println("There was a problem reading your credentials.");
@@ -71,7 +70,6 @@ public class Driver {
 		AmazonSQS sqsClient = null;
 		
 		try {
-			//get credentials from environment variables
 			myCredentials = new DefaultAWSCredentialsProviderChain().getCredentials();
 			sqsClient = new AmazonSQSClient(myCredentials); 
 		} catch (Exception ex) {
@@ -91,7 +89,6 @@ public class Driver {
 		AmazonS3 s3client = null;
 		
 		try {
-			//get credentials from environment variables
 			myCredentials = new DefaultAWSCredentialsProviderChain().getCredentials();
 			s3client = new AmazonS3Client(myCredentials); 
 		} catch (Exception ex) {
